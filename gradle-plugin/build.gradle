@@ -1,0 +1,33 @@
+apply plugin: 'groovy'
+
+repositories {
+    jcenter()
+    google()
+}
+
+dependencies {
+    compileOnly gradleApi()
+    compileOnly localGroovy()
+    compileOnly "com.android.tools.build:gradle:3.1.0"
+    implementation 'com.squareup:javapoet:1.10.0'
+}
+
+compileGroovy {
+    sourceCompatibility = "1.7"
+    targetCompatibility = "1.7"
+    options.encoding = "UTF-8"
+}
+
+apply plugin: 'maven'
+
+group='cn.nekocode.bangcle'
+archivesBaseName='BangclePlugin'
+version='local'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('.maven'))
+        }
+    }
+}
