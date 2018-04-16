@@ -67,20 +67,21 @@ class GenFilesTask extends DefaultTask {
                         .build()
         )
 
-        BangcleUtils.addField(
-                FieldSpec.builder(ArrayTypeName.of(TypeName.BYTE), 'iv')
-                        .addModifiers(Modifier.PRIVATE, Modifier.STATIC, Modifier.FINAL)
-                        .initializer(bangcleDsl.iv != null ? "\"${bangcleDsl.iv}\".getBytes()" : 'null')
-                        .build()
-        )
-
         final String bangclePackageName = 'com.bangcle'
+
+        final StringBuilder ivStr = new StringBuilder()
+        for (byte b : bangcleDsl.iv) {
+            ivStr.append(String.valueOf((int) b)).append(',')
+        }
 
         BangcleUtils.addMethod(
                 MethodSpec.methodBuilder('encrypt')
                         .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                         .returns(ArrayTypeName.of(TypeName.BYTE))
                         .addParameter(ArrayTypeName.of(TypeName.BYTE), 'plainData')
+
+                        .addStatement('final byte[] iv = ' +
+                        (bangcleDsl.iv != null ? 'new byte[] {' + ivStr + '}' : 'null'))
 
                         .addStatement(
                         'return $T.preDataOut160($T.laesEncryptByteArr(' +
@@ -96,8 +97,13 @@ class GenFilesTask extends DefaultTask {
                         .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                         .returns(ArrayTypeName.of(TypeName.BYTE))
                         .addParameter(ArrayTypeName.of(TypeName.BYTE), 'cipherData')
+
+                        .addStatement('final byte[] iv = ' +
+                        (bangcleDsl.iv != null ? 'new byte[] {' + ivStr + '}' : 'null'))
+
                         .addStatement('return PreDataTool.preDataOut161(CryptoTool.laesDecryptByteArr(' +
                         'PreDataTool.preDataIn161(cipherData, key2, iv), key2, iv), key2, iv)')
+
                         .build()
         )
 
