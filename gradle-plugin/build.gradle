@@ -30,4 +30,6 @@ uploadArchives {
             repository(url: uri('.maven'))
         }
     }
+
+    finalizedBy(clean)
 }
