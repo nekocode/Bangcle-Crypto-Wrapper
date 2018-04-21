@@ -3,7 +3,7 @@ package cn.nekocode.bangcle.exported;
 import java.lang.String;
 
 public final class Keys {
-    public static final String KEY2 = new String(CryptoUtils.decrypt(new byte[] {-66,15,25,78,-122,-118,-118,-59,28,60,-121,-117,-71,54,99,57,}));
+    public static final String KEY2 = new String(CryptoUtils.decrypt(new byte[] {93,-81,-30,-87,116,-76,69,-94,125,-1,-51,108,36,118,-104,-31,}));
 
-    public static final String KEY1 = new String(CryptoUtils.decrypt(new byte[] {94,-73,-100,-36,35,-53,-98,-113,9,-85,-103,124,22,-35,123,95,}));
+    public static final String KEY1 = new String(CryptoUtils.decrypt(new byte[] {107,-89,-78,-76,-49,57,8,59,52,-53,1,67,-111,-24,-97,51,}));
 }

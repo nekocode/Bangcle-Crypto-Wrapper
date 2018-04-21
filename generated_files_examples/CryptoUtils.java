@@ -9,13 +9,13 @@ public final class CryptoUtils {
 
     private static final String key2 = "1ad7d7176cb7037909bd92431c0ac4d7bdf90809790cd5e2196032b7c953e0ffc0d257b8db51145f690c8b732980beb1269bfcb86baa7484237df6aad9a7c13a2026b2fd1b0c1b81d26e73e7636543db60451aeca41e3f95e30602af2b2648c7203fb0158b0ce7c6661c94c5e20db59f26330f268e02779cf0104a2f101518a6e03d46f5fb3a3b2862764699a32a39a5d947321fa6db2cd68591649a777860b7334421f6e77e1a8fa0a526f3e7b3d78f6d68263e";
 
-    private static final byte[] iv = null;
-
     public static byte[] encrypt(byte[] plainData) {
+        final byte[] iv = new byte[] {-107,106,-48,-18,113,-7,105,122,-88,-79,42,-117,87,-94,10,42,};
         return PreDataTool.preDataOut160(CryptoTool.laesEncryptByteArr(PreDataTool.preDataIn160(plainData, key1, iv), key1, iv), key1, iv);
     }
 
     public static byte[] decrypt(byte[] cipherData) {
+        final byte[] iv = new byte[] {-107,106,-48,-18,113,-7,105,122,-88,-79,42,-117,87,-94,10,42,};
         return PreDataTool.preDataOut161(CryptoTool.laesDecryptByteArr(PreDataTool.preDataIn161(cipherData, key2, iv), key2, iv), key2, iv);
     }
 }
