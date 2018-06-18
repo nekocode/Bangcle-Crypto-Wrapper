@@ -1,0 +1,8 @@
+apply from: file('common.gradle')
+
+allDependencies.each {
+    dependencies.add('compileOnly', it)
+}
+dependencies {
+    implementation 'com.squareup:javapoet:1.10.0'
+}

@@ -1,10 +1,3 @@
-include ':gradle-plugin'
+include ':buildSrc', ':lib-exported', ':example'
 
-boolean exclude = false
-
-final File excludeFile = new File("exclude")
-if (!exclude && !excludeFile.exists()) {
-    include ':lib-exported', ':example'
-} else {
-    excludeFile.delete()
-}
+project(':buildSrc').buildFileName = 'buildSrc.gradle'

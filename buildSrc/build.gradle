@@ -1,0 +1,13 @@
+repositories {
+    google()
+    jcenter()
+}
+
+apply from: file('common.gradle')
+
+allDependencies.each {
+    dependencies.add('implementation', it)
+}
+dependencies {
+    implementation 'com.squareup:javapoet:1.10.0'
+}

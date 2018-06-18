@@ -1,16 +1,5 @@
 apply plugin: 'com.android.library'
 
-buildscript {
-    repositories {
-        google()
-        jcenter()
-        maven { url project(':gradle-plugin').file('.maven').toURI() }
-    }
-    dependencies {
-        classpath 'cn.nekocode.bangcle:BangclePlugin:local'
-    }
-}
-
 android {
     compileSdkVersion 26
 
