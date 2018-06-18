@@ -9,5 +9,3 @@
 *.iml
 *.apk
 *.jobf
-.maven
-.exclude_demos
